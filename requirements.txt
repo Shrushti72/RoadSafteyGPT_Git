@@ -1,46 +1,8 @@
-# requirements.txt
-# Core RAG and LLM Libraries
-langchain==0.1.0
-langchain-community==0.0.13
-langchain-core>=0.1.7,<0.2
-langchain-google-genai==3.0.0
-pydantic==1.10.13
-numpy
-openai
-tiktoken
-python-dotenv
-
-# PDF Parsing (for MoRTH, IRC:67)
-pypdf  # Simple PDF loader
-unstructured[all-docs] # Advanced parsing for complex PDFs/tables (better for MoRTH)
-pillow # For image handling in multimodal (used by unstructured)
-lxml   # For HTML/XML parsing (part of unstructured dependency)
-
-# Vector Store
-chromadb
-
-# Web Frameworks
-streamlit
-fastapi
-uvicorn
-
-# Mapping
-folium
-streamlit-folium
-
-# Multimodal/Image Handling
-# Use a library that can process images into text/embeddings
-# (e.g., LLaVA via an API, or simply generate descriptions using an LLM like GPT-4V/Gemini)
-# For a standard setup, we'll ensure we can handle base64 images, often using Pillow and a vision model via the 'openai' or 'google-genai' client.
-# We'll rely on the 'openai' or 'google-generativeai' library and the 'multimodal_handler.py' to implement the VLM logic.
-google-generativeai
-
-# Text Processing
-nltk
-
-# Topic Modeling (LDA)
-gensim
-scikit-learn
-
-# Additional for Streamlit app
-requests
+streamlit==1.28.2
+pandas==2.0.3
+numpy==1.24.3
+Pillow==10.0.1
+requests==2.31.0
+folium==0.15.1
+streamlit-folium==0.17.0
+nltk==3.8.1
