@@ -22,4 +22,4 @@ RUN python -c "import nltk; nltk.download('punkt', quiet=True); nltk.download('s
 COPY . .
 
 # 8. Command to run the Streamlit application
-CMD ["streamlit", "run", "app/app.py", "--server.port", "10000", "--server.address", "0.0.0.0"]
+CMD ["streamlit", "run", "app.py", "--server.port", "10000", "--server.address", "0.0.0.0"]
