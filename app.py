@@ -8,9 +8,6 @@ import hashlib
 import random 
 from typing import Dict, Any, List
 import requests 
-import os
-from dotenv import load_dotenv
-load_dotenv()
 
 # --- CONFIGURATION (MUST be the first Streamlit call) ---
 st.set_page_config(
@@ -20,7 +17,7 @@ st.set_page_config(
 )
 
 # --- NEW: API Configuration (You MUST replace this placeholder key) ---
-WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")
+WEATHER_API_KEY = "YOUR_ACTUAL_OPENWEATHERMAP_API_KEY_HERE" # **<-- FIXED: Replaced non-functional key**
 WEATHER_API_URL = "https://api.openweathermap.org/data/2.5/weather"
 # --- END NEW CONFIG ---
 
@@ -586,28 +583,16 @@ def create_folium_map(risk_filter: str, road_type_filter: str, weather_filter: s
 # --- SIDEBAR FOR FILTERING & GUIDE (UPDATED) ---
 
 # --- SHECODES TEAM BRANDING (NEW IMAGE LOGO) ---
-# FIX 1: Corrected the path to be relative to the project root, 
-# FIX 1: which requires including the 'app/' directory.
-# Assuming your image is at: ROADSAFETYGPT/app/images/logo.jpeg
-LOGO_PATH = "app/images/logo.jpeg" 
-
+LOGO_URL = "http://googleusercontent.com/image_generation_content/0"
 st.sidebar.markdown("---")
-
-# FIX 2: Using st.sidebar.image is more robust for local files than raw HTML markdown.
-try:
-    st.sidebar.image(
-        LOGO_PATH, 
-        # FIX 3: Using the current best practice parameter (use_container_width=True)
-        use_container_width=True
-    )
-except FileNotFoundError:
-    # Provides a useful error if the image is still not found at the expected path
-    st.sidebar.error(f"Error: Logo file not found. Ensure '{LOGO_PATH}' exists.")
-except Exception:
-    st.sidebar.error("Error displaying image. Check file permissions or format.")
-
-st.sidebar.markdown("---")
-
+st.sidebar.markdown(
+    f"""
+    <div style="text-align: center; margin-top: 10px; margin-bottom: 30px;">
+        <img src="{LOGO_URL}" alt="SheCodes Road Safety Solutions Team Logo" style="width: 100%; max-width: 220px; height: auto;">
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
 # --- END SHECODES TEAM BRANDING ---
 
 st.sidebar.header("Map Filter")
@@ -708,7 +693,8 @@ if weather_fetch_btn:
     # Set a temporary loading status
     st.session_state['last_fetch_status'] = 'Fetching live weather data...' 
     
-    if WEATHER_API_KEY == "d7618eeb28c090eeeb14e936927691d4":
+    # **FIX APPLIED HERE:** Check for the new explicit placeholder key
+    if WEATHER_API_KEY == "YOUR_ACTUAL_OPENWEATHERMAP_API_KEY_HERE":
         st.session_state['last_fetch_status'] = "⚠️ **API Key Placeholder**: Please replace the placeholder key in `app.py` with your actual key to enable real-time fetching."
         st.session_state['current_weather'] = "Clear (API Key Placeholder)"
     else:
