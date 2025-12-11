@@ -1,0 +1,126 @@
+/* assets/style.css - FINAL VERSION FOR PIXEL MATCH */
+
+/* Import FontAwesome for icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+/* --- 1. Global App Structure and Background --- */
+
+/* Overall app background (light blueish-grey, #F0F2F6) */
+[data-testid="stAppViewContainer"] {
+    background-color: #F0F2F6 !important;
+}
+
+/* Ensure the main app content area spans full width if layout='wide' */
+.main .block-container {
+    padding: 2rem 2rem 2rem 2rem;
+    margin-top: 10px;
+}
+
+/* --- 2. Header and Banner Styling --- */
+
+/* Targets the Streamlit header container */
+.stApp > header {
+    background-color: transparent !important; /* Make Streamlit's default header transparent */
+}
+
+/* Remove default padding from the body where the content starts */
+[data-testid="stVerticalBlock"] > div:first-child > div:first-child {
+    padding-top: 0 !important;
+}
+
+/* --- 3. Sidebar Styling (Minimal/Hidden in Target Image) --- */
+
+/* If you use the sidebar, ensure it's white and clean */
+[data-testid="stSidebar"] {
+    background-color: #FFFFFF !important;
+    border-right: 1px solid #E0E0E0;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.05);
+}
+
+/* --- 4. Content Blocks (Containers) and Shadows --- */
+
+/* Targets all blocks/containers for the white background and shadow */
+[data-testid="stVerticalBlock"], [data-testid="stHorizontalBlock"] {
+    background-color: #FFFFFF !important; 
+    border-radius: 10px;
+    padding: 0 !important; /* Control padding internally */
+    margin-bottom: 20px; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05); 
+}
+
+/* Ensure the background of the entire content area is white for the grouping effect */
+.stContainer {
+    background-color: #FFFFFF !important;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05); 
+}
+/* Ensure the outer container doesn't have double padding/margins */
+.stContainer:first-child {
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+
+/* --- 5. Metric Card Styling (Crucial for the Look) --- */
+
+[data-testid="stMetric"] {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05); 
+    text-align: center;
+}
+[data-testid="stMetric"] label {
+    font-weight: normal !important;
+    color: #555555;
+    font-size: 1em;
+}
+[data-testid="stMetricValue"] {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #007BFF; /* Primary blue for values */
+}
+[data-testid="stMetricDelta"] {
+    font-size: 1.5em !important; /* Larger arrows */
+    font-weight: 700 !important;
+    color: #28a745; /* Green for up */
+}
+/* Specifically target the down arrow color */
+[data-testid="stMetricDelta"][data-testid="stMetricDelta"]:empty:before {
+    color: #dc3545; /* Red for down */
+}
+
+
+/* --- 6. Typography and Headers --- */
+h1, h2, h3, h4, h5, h6 {
+    color: #005A9C !important; /* Deep Blue for all headings */
+    font-weight: 600 !important;
+}
+
+/* --- 7. Custom Component Styling (RAG Output & Map Callout) --- */
+
+.rag-output-container {
+    background-color: #F8F8F8; 
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 1px solid #EEEEEE;
+}
+.rag-subheader {
+    font-weight: bold;
+    color: #005A9C;
+}
+.rag-severity {
+    font-weight: bold;
+    color: #dc3545; /* Red for severity/impact */
+}
+.risk-summary-container {
+    background-color: #F8F8F8;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    border: 1px solid #EEEEEE;
+}
+.risk-summary-text strong {color: #dc3545;
+}
